@@ -14,6 +14,8 @@ public class Contato extends HATEOASBuilder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String email;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "cidade_id")
     @JsonProperty(value = "cidade", access = JsonProperty.Access.READ_ONLY)
@@ -56,6 +58,14 @@ public class Contato extends HATEOASBuilder {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Cidade getCidadeEntity() {
