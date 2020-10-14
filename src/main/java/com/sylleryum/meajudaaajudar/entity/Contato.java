@@ -1,5 +1,6 @@
 package com.sylleryum.meajudaaajudar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sylleryum.meajudaaajudar.assembler.HATEOASBuilder;
 
@@ -28,6 +29,7 @@ public class Contato extends HATEOASBuilder {
     private String telefone;
 
     @OneToOne(mappedBy = "contato")
+    @JsonIgnore
     private Instituicao instituicao;
 
     @Column(name = "cidade_id", insertable = false, updatable = false)
