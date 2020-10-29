@@ -1,6 +1,7 @@
 package com.sylleryum.meajudaaajudar.controller;
 
 import com.sylleryum.meajudaaajudar.commons.EntityToHATEOAS;
+import com.sylleryum.meajudaaajudar.commons.TraceIdGenerator;
 import com.sylleryum.meajudaaajudar.entity.Cidade;
 import com.sylleryum.meajudaaajudar.assembler.CidadeModelAssembler;
 import com.sylleryum.meajudaaajudar.assembler.CidadeRepresentationModelAssembler;
@@ -9,11 +10,13 @@ import com.sylleryum.meajudaaajudar.exception.ResourceNotFoundException;
 import com.sylleryum.meajudaaajudar.service.CidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @RestController
@@ -36,7 +39,9 @@ public class CidadeController implements HATEOASController {
 
     @GetMapping(value = {"/", ""})
     public ResponseEntity<?> findAll(Pageable pageable,
-                                     Optional<String> traceIdHeader) {
+                                     @RequestHeader(value = "trace-id") Optional<String> traceIdHeader) {
+
+        String traceId = TraceIdGenerator.generateTraceId(traceIdHeader);
         //public Page<Cidade> findAll(Pageable pageable){
 
         //return ResponseEntity.ok(this.assembler.toCollectionModel(this.cidadeService.findAll(pageable)));
@@ -65,12 +70,14 @@ public class CidadeController implements HATEOASController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id,
-                                      Optional<String> traceIdHeader) throws ResourceNotFoundException {
+                                      @RequestHeader(value = "trace-id") Optional<String> traceIdHeader) throws ResourceNotFoundException {
+
+        String traceId = TraceIdGenerator.generateTraceId(traceIdHeader);
 //        return cidadeService.findById(id).map(cidadeRepresentationModelAssembler::toModel)
 //                .map(ResponseEntity::ok)
 //                .orElse(ResponseEntity.notFound()
 //                        .build());
-        Optional<Cidade> results = cidadeService.findById(id);
+        Optional<Cidade> results = cidadeService.findById(id, traceId);
         if (results.isPresent()) {
             EntityToHATEOAS.cidadeToHATEOAS(results.get());
             return new ResponseEntity(results.get(), HttpStatus.OK);
@@ -78,8 +85,28 @@ public class CidadeController implements HATEOASController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/ativas")
+    public ResponseEntity<?> findByAtivas(Pageable pageable,
+                                          @RequestHeader(value = "trace-id") Optional<String> traceIdHeader) {
+        String traceId = TraceIdGenerator.generateTraceId(traceIdHeader);
+
+        Page<Cidade> results = cidadeService.findAllActiveCidades(pageable, traceId);
+
+        results.forEach(i -> {
+            try {
+                EntityToHATEOAS.cidadeToHATEOAS(i);
+            } catch (ResourceNotFoundException e) {
+            }
+        });
+        return new ResponseEntity(results, HttpStatus.OK);
+
+    }
+
     @GetMapping("/search")
-    public ResponseEntity<?> findByNome(Pageable pageable, @RequestParam Optional<String> nome) {
+    public ResponseEntity<?> findByNome(Pageable pageable,
+                                        @RequestParam Optional<String> nome,
+                                        @RequestHeader(value = "trace-id") Optional<String> traceIdHeader) {
+        String traceId = TraceIdGenerator.generateTraceId(traceIdHeader);
 //        System.out.println();
 //        Page<Cidade> cidadesSearch = null;
 //        if (nome.isPresent()) {
@@ -121,7 +148,6 @@ public class CidadeController implements HATEOASController {
 //                .created(new URI(employeeResource.getRequiredLink(IanaLinkRelations.SELF).getHref())) //
 //                .body(employeeResource);
 //    }
-
 
 
 }

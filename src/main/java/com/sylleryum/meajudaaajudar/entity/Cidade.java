@@ -35,6 +35,7 @@ public class Cidade extends HATEOASBuilder{
     //@JsonManagedReference
     @OneToMany(mappedBy = "cidadeEntity",
             cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Instituicao> instituicoes;
 
     public Cidade() {

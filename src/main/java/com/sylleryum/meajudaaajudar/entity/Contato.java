@@ -17,10 +17,16 @@ public class Contato extends HATEOASBuilder {
 
     private String email;
 
+    //@JsonProperty(value = "cidade", access = JsonProperty.Access.READ_ONLY)
     @ManyToOne(optional = false)
     @JoinColumn(name = "cidade_id")
-    @JsonProperty(value = "cidade", access = JsonProperty.Access.READ_ONLY)
+    @JsonIgnore
     private Cidade cidadeEntity;
+    @JsonProperty(value = "cidade", access = JsonProperty.Access.READ_ONLY)
+    public String getCidade() {
+        return cidadeEntity.getNome();
+    }
+
 
     private String logradouro;
 

@@ -42,14 +42,6 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ApiErrorEntity(e.getTraceId(), e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
-//    @ExceptionHandler(IlegalTokenException.class)
-//    public final ResponseEntity<ApiErrorEntity> handleIlegalTokenException(
-//            IlegalTokenException e, WebRequest webRequest) {
-//
-//        return new ResponseEntity<>(new ApiErrorEntity(e.getTraceId(), e.getMessage()), HttpStatus.FORBIDDEN);
-//    }
-
-    //-----------else
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ApiErrorEntity> handleOtherException(
             Exception e, WebRequest webRequest) {

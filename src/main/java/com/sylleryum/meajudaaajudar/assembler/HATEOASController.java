@@ -11,6 +11,6 @@ public interface HATEOASController {
 //    public ResponseEntity<?> findAll(Pageable pageable){return null;}
 //    public ResponseEntity<?> findById(Long id){return null;}
 
-    ResponseEntity<?> findAll(Pageable pageable, Optional<String> traceIdHeader);
+    ResponseEntity<?> findAll(Pageable pageable, Optional<String> traceIdHeader) throws ResourceNotFoundException;
     ResponseEntity<?> findById(Long id, Optional<String> traceIdHeader) throws ResourceNotFoundException;
 }

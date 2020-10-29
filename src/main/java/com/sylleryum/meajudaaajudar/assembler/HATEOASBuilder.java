@@ -71,7 +71,11 @@ public class HATEOASBuilder{
             } catch (ResourceNotFoundException e) {
 
             }
-            linksList.add(linkTo(methodOn(ControllerClass).findAll(null, null)).withRel(rel));
+            try {
+                linksList.add(linkTo(methodOn(ControllerClass).findAll(null, null)).withRel(rel));
+            } catch (ResourceNotFoundException e) {
+                e.printStackTrace();
+            }
             i.setLinks(linksList);
         });
     }
