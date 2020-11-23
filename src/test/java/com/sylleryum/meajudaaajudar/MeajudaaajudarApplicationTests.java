@@ -38,10 +38,7 @@ class MeajudaaajudarApplicationTests {
 
     @Test
     void test() {
-        Optional<Instituicao> byId = instituicaoRepository.findById(1l);
-        Donation don = new Donation(byId.get());
-        don.setId(4l);
-        donationRepository.save(don);
+        Optional<Instituicao> byId = instituicaoRepository.findById(24l);
         System.out.println();
     }
 

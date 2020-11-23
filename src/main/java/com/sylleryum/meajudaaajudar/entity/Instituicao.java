@@ -25,6 +25,7 @@ public class Instituicao extends HATEOASBuilder {
     private String sobre;
     private String url;
     private String doarLink;
+    private String infoDoacao;
 
     /*
     properties sent on get:
@@ -75,7 +76,7 @@ public class Instituicao extends HATEOASBuilder {
     public Instituicao() {
     }
 
-    public Instituicao(String nome, String imagem, String descricao, String sobre, String url, String doarLink, Contato contato, Causa causa, Cidade cidade) {
+    public Instituicao(String nome, String imagem, String descricao, String sobre, String url, String doarLink, Contato contato, Causa causa, Cidade cidade, String infoDoacao) {
         this.nome = nome;
         this.imagem = imagem;
         this.descricao = descricao;
@@ -85,6 +86,7 @@ public class Instituicao extends HATEOASBuilder {
         this.contato = contato;
         this.causa = causa;
         this.cidadeEntity = cidade;
+        this.infoDoacao = infoDoacao;
     }
 
     @Override
@@ -184,7 +186,15 @@ public class Instituicao extends HATEOASBuilder {
         this.causaId = causa_id;
     }
 
-//    public Long getContatoId() {
+    public String getInfoDoacao() {
+        return infoDoacao;
+    }
+
+    public void setInfoDoacao(String infoDoacao) {
+        this.infoDoacao = infoDoacao;
+    }
+
+    //    public Long getContatoId() {
 //        return contatoId;
 //    }
 //
