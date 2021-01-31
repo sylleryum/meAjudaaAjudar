@@ -15,7 +15,7 @@ This readme is for both back and front end, the REPO/source code for the fronten
 
 ## Full description/features
 
-* This API collects data manually for charity institution that look 100% serious/committed to its cause and makes it easily available to everyone
+* This API collects data manually for charity institutions that look 100% serious/committed to its cause and makes it easily available to everyone
 * Provides location (city) and causes filters to help one choose
 * Provides several details regarding the institutions as description, website (when available), logo, location and several others
 * All the institutions listed have clear and easy details on how to donate, normally the donation page of the institution and/or full details to transfer money
