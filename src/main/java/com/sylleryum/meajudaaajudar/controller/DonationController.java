@@ -2,7 +2,6 @@ package com.sylleryum.meajudaaajudar.controller;
 
 import com.sylleryum.meajudaaajudar.commons.TraceIdGenerator;
 import com.sylleryum.meajudaaajudar.entity.Donation;
-import com.sylleryum.meajudaaajudar.entity.Test;
 import com.sylleryum.meajudaaajudar.exception.ResourceAlreadyExistsException;
 import com.sylleryum.meajudaaajudar.exception.ResourceNotFoundException;
 import com.sylleryum.meajudaaajudar.service.DonationService;

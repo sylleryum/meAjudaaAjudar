@@ -55,7 +55,6 @@ public class EstadoController implements HATEOASController {
             return new ResponseEntity(results.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
 
     @GetMapping("/search")
