@@ -30,8 +30,8 @@ public class ApiUserEntity implements UserDetails {
     private boolean isAccountNonLocked;
     @Transient
     private boolean isCredentialsNonExpired;
-    @Transient
-    private boolean isEnabled;
+    @Column(name = "enabled")
+    private boolean enabled;
 
     public ApiUserEntity() {
         setAccountActive();
@@ -42,7 +42,7 @@ public class ApiUserEntity implements UserDetails {
                          boolean isAccountNonExpired,
                          boolean isAccountNonLocked,
                          boolean isCredentialsNonExpired,
-                         boolean isEnabled,
+                         boolean enabled,
                          String role,
                          String token) {
 
@@ -52,7 +52,7 @@ public class ApiUserEntity implements UserDetails {
         this.isAccountNonExpired = isAccountNonExpired;
         this.isAccountNonLocked = isAccountNonLocked;
         this.isCredentialsNonExpired = isCredentialsNonExpired;
-        this.isEnabled = isEnabled;
+        this.enabled = enabled;
         this.role = role;
         this.token = token;
     }
@@ -96,7 +96,7 @@ public class ApiUserEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.isEnabled;
+        return this.enabled;
     }
 
     public Long getId() {
@@ -132,7 +132,7 @@ public class ApiUserEntity implements UserDetails {
     }
 
     public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
+        this.enabled = enabled;
     }
 
     public String getRole() {
@@ -155,6 +155,6 @@ public class ApiUserEntity implements UserDetails {
         this.isAccountNonExpired = true;
         this.isAccountNonLocked = true;
         this.isCredentialsNonExpired = true;
-        this.isEnabled = true;
+        this.enabled = true;
     }
 }
