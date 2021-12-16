@@ -1,7 +1,7 @@
 # meAjudaaAjudar
 Me ajuda a ajudar is a web application that gather data regarding serious charity institution in Brazil (curerently only in Rio grande do sul) and therefore helps the user to find an institution to donate to which aligns with one's beliefs (full description below)
 
-Available at http://meajudaaajudar.com.br/ (Available only in Portuguse due to the local scope of the project)
+Available at https://sylleryum.github.io/meajudaaajudarfrontend/ (Available only in Portuguse due to the local scope of the project)
 
 ![system working](https://github.com/sylleryum/meAjudaaAjudar/blob/main/demo.gif)
 
