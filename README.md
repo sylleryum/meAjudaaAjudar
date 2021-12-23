@@ -5,7 +5,7 @@ Available at https://sylleryum.github.io/meajudaaajudarfrontend/ (Available only
 
 ![system working](https://github.com/sylleryum/meAjudaaAjudar/blob/main/demo.gif)
 
-This readme is for both back and front end, the REPO/source code for the frontend can be found here: https://github.com/sylleryum/meajudaaajudarfrontend
+This readme is for both backend API (this repo) and frontend, the REPO/source code for the frontend can be found here: https://github.com/sylleryum/meajudaaajudarfrontend
 
 ## Why this is useful
 
