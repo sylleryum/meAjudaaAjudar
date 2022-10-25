@@ -1,3 +1,5 @@
+# Important: as of November 28th this project needs to be ran locally as Heroku which was the hosting it, has closed its free tier services.
+
 # meAjudaaAjudar
 Me ajuda a ajudar is a web application that gather data regarding serious charity institution in Brazil (curerently only in Rio grande do sul) and therefore helps the user to find an institution to donate to which aligns with one's beliefs (full description below)
 
